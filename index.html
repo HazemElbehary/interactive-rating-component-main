@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | Interactive rating component</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0%;
+            padding: 0%;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        
+        .parent {
+            background-color: #23282B;
+            border-radius: 10px;
+            padding: 20px;
+            width: 350px;
+            position: relative;
+        }
+        
+        .star {
+            background-color: #293133;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        h1 {
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .steps span {
+            color: #777;
+            background-color: #293133;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        /* .steps span:hover {
+            background-color: red;
+            color: white;
+        } */
+        
+        p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+        
+        input {
+            color: white;
+            outline: none;
+            border: none;
+            background-color: red;
+            width: 100%;
+            padding: 15px;
+            border-radius: 33px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        /* input:hover {
+            background-color: white;
+            color: red;
+        }
+         */
+        
+        .active {
+            background-color: white !important;
+        }
+        
+        .div5 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            text-align: center;
+            background-color: #23282B;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .outof {
+            padding: 10px 20px;
+            color: red;
+            background-color: #333;
+            width: fit-content;
+            border-radius: 30px;
+            margin: 19px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="star">
+            <img src="images/icon-star.svg">
+        </div>
+        <h1>How did we do?</h1>
+        <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!
+        </p>
+        <div class="steps">
+            <span class="sp">1</span>
+            <span class="sp">2</span>
+            <span class="sp">3</span>
+            <span class="sp">4</span>
+            <span class="sp" data-set="class5">5</span>
+        </div>
+        <input type="button" value="SUBMIT" class="submit">
+        <div class="div5">
+            <div><img src="images/illustration-thank-you.svg"></div>
+            <div class="outof">You selected 4 out of 5</div>
+            <h1>Thank You!</h1>
+            <p style="line-height: 1.3;">We appreciate you taking the time to give a rating.if you ever need more support, don't hesitate to get in touch!
+            </p>
+        </div>
+    </div>
+    <script>
+        let submit = document.querySelector(`.submit`);
+        let p = document.querySelector(`.steps`)
+        let steps = document.querySelectorAll(`.steps span`);
+        let parent = document.querySelector(`.parent`);
+        let div5 = document.querySelector(`.div5`);
+        div5.style.display = 'none';
+        p.onclick = function(event) {
+            if (event.target.classList.contains("sp")) {
+                steps.forEach(element => {
+                    element.classList.remove("active");
+                });
+                event.target.classList.add("active");
+            }
+        }
+        submit.onclick = () => {
+            div5.style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>
